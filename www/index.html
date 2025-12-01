@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <title>Monaca Education ダイレクトプレビュー</title>
+    <script src="components/loader.js"></script><link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/education.js" defer></script>
+    <script src="js/config.js" defer></script>
+    <script src="js/main.js" type="module"></script>
+    <link href="./css/output.css" rel="stylesheet">
+</head>
+<body class="dark:bg-slate-950">
+    <header class="bg-linear-to-b from-slate-900 to-slate-950 font-extrabold text-3xl text-white/30">
+        <div class="mx-6 pt-3.5 font-serif">
+            SimpleToDo
+        </div>
+        <div class="flex justify-center text-[1rem] mt-2">
+            <input type="search" placeholder="検索" class="border-2 rounded-2xl text-[1rem] py-1.5 px-1.5">
+            <input type="button" class="bg-white/10 hover:bg-white/20 px-2 mx-2 rounded-2xl" value="検索">
+            <input type="button" class="bg-white/10 hover:bg-white/20 px-2 rounded-2xl" value="📅">
+        </div>
+    </header>
+    <main>
+        <ul id="tasks" class="text-white m-6 ">
+        </ul>
+        <div class="absolute bottom-15 right-5">
+            <div class="text-white/70 m-4 p-4 bg-white/7 hover:bg-white/14 rounded-full text-center cursor-pointer">+</div>
+            <div class="text-white/70 m-4 p-4 bg-white/7 hover:bg-white/14 rounded-full text-center cursor-pointer">✓</div>
+        </div>
+    </main>
+    <!-- 
+        li -- task
+        li->div -- title    タイトル
+                -- content  内容
+                -- due-date 期限
+                -- done     完了
+                -- del      削除
+    -->
+    <template id="tpl-todo">
+        <li class="task mb-4 border border-white/10  bg-white/5 p-3 rounded-2xl"> <!--data属性で分ける-->
+            <div class="flex justify-between items-center"> 
+                <div class="title text-3xl my-1 text-white/70">タイトル</div>
+                <div class="due-date text-white/35">期限</div>
+            </div>
+            <div class="flex justify-between items-center">
+                <div class="content text-white/35 line-clamp-2 wrap-break-word mr-5">内容</div>
+                <div class="flex">
+                    <div class="done mx-1 bg-sky-400/30 px-2 py-1.5 items-center rounded-2xl cursor-pointer hover:bg-sky-300/30 text-nowrap">完了</div>
+                    <div class="del ml-1 bg-red-400/30 px-2 py-1.5 items-center rounded-2xl cursor-pointer hover:bg-red-300/30 text-nowrap">削除</div>
+                </div>
+            </div>
+        </li>
+    </template>
+</body>
+</html>
