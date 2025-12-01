@@ -19,3 +19,4 @@ export interface StoredTask {
 export type StoredTasksMap = Record<number, StoredTask>;
 
 export const STORAGE_KEY = "tasks";
+export const QUERY_KEY = "query"

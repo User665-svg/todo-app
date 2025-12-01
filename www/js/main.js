@@ -1,20 +1,21 @@
-import { read } from "./localStorage.js";
-import { STORAGE_KEY } from "./type.js";
-import { getFieldElement, toDateText } from "./utility.js";
+import { TaskManager } from "./logic.js";
+import {} from "./type.js";
+import { defaultTask, getFieldElement, toDateText } from "./utility.js";
+const manager = new TaskManager();
 const top_element = {
     "todo": document.getElementById('tpl-todo'),
-    "tasks": document.getElementById('tasks')
+    "tasks": document.getElementById('tasks'),
+    "add": document.getElementById('add-btn'),
+    "checked": document.getElementById('checked-btn')
 };
-function render() {
-    const stored = read(STORAGE_KEY, {});
-    console.log(Object.entries(stored).length);
-    if (!stored)
+function render(tasks) {
+    if (!tasks)
         return;
-    console.log(Object.entries(stored));
-    for (const t of Object.values(stored)) {
+    top_element.tasks.innerHTML = '';
+    for (const [idx, t] of Object.entries(tasks)) {
         const task = top_element.todo.content.cloneNode(true);
         const li = task.querySelector('li');
-        li === null || li === void 0 ? void 0 : li.setAttribute('data-id', String(t.id));
+        li === null || li === void 0 ? void 0 : li.setAttribute('data-id', String(idx));
         const title = getFieldElement(task, "title");
         const content = getFieldElement(task, "content");
         const date = getFieldElement(task, "due-date");
@@ -25,7 +26,11 @@ function render() {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    render();
-    console.log(top_element.tasks.querySelectorAll('[data-id]'));
+    render(manager.getDataAll());
+    // console.log(top_element.tasks.querySelectorAll('[data-id]'));
+});
+top_element.add.addEventListener('click', () => {
+    manager.addTask(defaultTask());
+    render(manager.getDataAll());
 });
 //# sourceMappingURL=main.js.map

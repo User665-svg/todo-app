@@ -6,10 +6,12 @@ import {
   type TaskId, 
   type TasksMap 
 } from "./type.js";
+import { toArray, toTaskMap } from "./utility.js";
 
 // タスクを管理するクラス
 export class TaskManager {
   private tasks: TasksMap = {};
+  private visibleTask: TasksMap = {};
   private nextId: TaskId = 1;
 
   // ローカルストレージから復元する
@@ -64,12 +66,13 @@ export class TaskManager {
     if (!this.tasks[id]) {
       throw new Error(`Task not found. id=${id}`);
     }
-    return this.tasks[id];
+    const task = this.tasks[id]
+    return task;
   }
-
   // 全てのデータを取得する
   getDataAll():TasksMap{
-    return this.tasks;
+    this.visibleTask = this.tasks
+    return this.visibleTask;
   }
 }
 
@@ -82,4 +85,5 @@ const task1: Task = {
 };
 
 const manage = new TaskManager()
+console.log(manage.getTask(1))
 // manage.addTask(task1)

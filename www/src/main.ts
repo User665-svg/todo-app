@@ -1,18 +1,18 @@
 
 import { TaskManager } from "./logic.js";
 import { type TasksMap } from "./type.js";
-import { getFieldElement, toDateText } from "./utility.js";
+import { defaultTask, getFieldElement, toDateText } from "./utility.js";
 
 const manager = new TaskManager();
 const top_element = {
     "todo":document.getElementById('tpl-todo') as HTMLTemplateElement,
-    "tasks":document.getElementById('tasks') as HTMLUListElement
+    "tasks":document.getElementById('tasks') as HTMLUListElement,
+    "add":document.getElementById('add-btn') as HTMLDivElement,
+    "checked":document.getElementById('checked-btn') as HTMLDivElement
 }
-function render(){
-    const tasks:TasksMap = manager.getDataAll();
-    console.log(Object.entries(tasks).length)
+function render(tasks:TasksMap){
     if (!tasks) return;
-    console.log(Object.entries(tasks));
+    top_element.tasks.innerHTML = '' 
     for (const [idx,t] of Object.entries(tasks)) {
         const task = top_element.todo.content.cloneNode(true) as DocumentFragment;
         const li = task.querySelector('li');
@@ -28,6 +28,11 @@ function render(){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    render()
-    console.log(top_element.tasks.querySelectorAll('[data-id]'));
+    render(manager.getDataAll())
+    // console.log(top_element.tasks.querySelectorAll('[data-id]'));
+})
+
+top_element.add.addEventListener('click',()=>{
+    manager.addTask(defaultTask());
+    render(manager.getDataAll());
 })

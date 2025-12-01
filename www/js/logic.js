@@ -1,10 +1,12 @@
-import { read, edit, add, write } from "./localStorage.js";
+import { read, write } from "./localStorage.js";
 import { STORAGE_KEY } from "./type.js";
+import { toArray, toTaskMap } from "./utility.js";
 // タスクを管理するクラス
 export class TaskManager {
     // ローカルストレージから復元する
     constructor() {
         this.tasks = {};
+        this.visibleTask = {};
         this.nextId = 1;
         const stored = read(STORAGE_KEY, {});
         const loaded = {};
@@ -50,7 +52,13 @@ export class TaskManager {
         if (!this.tasks[id]) {
             throw new Error(`Task not found. id=${id}`);
         }
-        return this.tasks[id];
+        const task = this.tasks[id];
+        return task;
+    }
+    // 全てのデータを取得する
+    getDataAll() {
+        this.visibleTask = this.tasks;
+        return this.visibleTask;
     }
 }
 const task1 = {
@@ -60,5 +68,6 @@ const task1 = {
     isDone: false,
 };
 const manage = new TaskManager();
+console.log(manage.getTask(1));
 // manage.addTask(task1)
 //# sourceMappingURL=logic.js.map
