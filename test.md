@@ -1,28 +1,32 @@
 ::: mermaid
-    classDiagram
-    TaskManeger <--> DB
-    TaskQuery <-- TaskManeger
-    TaskManeger --> View
-    class TaskQuery{
-        +TaskMap sort()
-        +TaskMap filter()
-        +TaskMap VisibleTask
-    }
-    class View{
-        +taskMap VisbleTask
-        +void render(TaskMap)
-    }
-    class TaskManeger{
-        +void addTask()
-        +Task getTask()
-        +TaskMap getDataAll()
-        +TaskMap VisibleTsk
-    }
-    class DB{
-        +int id
-        +string title
-        +string content
-        +string dueDate
-        +boolean isDone
-    }
+classDiagram
+User --> View
+View --> TaskUseCase : ユーザー操作
+TaskUseCase --> TaskRepository :追加/更新/削除
+TaskUseCase --> TaskQuery :表示用データ
+TaskQuery --> TaskRepository :全データ参照
+
+class TaskRepository{
+  +add(task)
+  +edit(id)
+  +delete(id)
+  +getAll(): TaskMap
+  +get(id): Task
+}
+
+class TaskQuery{
+  +sort(TaskMap): TaskMap
+  +filter(TaskMap): TaskMap
+}
+
+class TaskUseCase{
+  +addTask(input)
+  +toggleDone(id)
+  +showVisibleTasks():TaskMap
+}
+
+class View{
+  +render(TaskMap)
+}
+
 :::

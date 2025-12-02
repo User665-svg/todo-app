@@ -3,7 +3,7 @@ import type { Task, TasksMap } from "./type.js";
 import { toArray, toTaskMap } from "./utility.js";
 
 export class queryVisible{
-    private manager: TaskManager = new TaskManager();
+    constructor(private manager: TaskManager) {}
 
     private getArrayTasks():[string,Task][]{
         const tasks = this.manager.getDataAll();

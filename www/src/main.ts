@@ -3,8 +3,8 @@ import { type TasksMap } from "./type.js";
 import { defaultTask, getFieldElement, toDateText } from "./utility.js";
 import { queryVisible } from "./visible.js";
 
-const visibleTasks = new queryVisible();
 const manager = new TaskManager();
+const visibleTasks = new queryVisible(manager);
 
 const top_element = {
     "todo":document.getElementById('tpl-todo') as HTMLTemplateElement,
