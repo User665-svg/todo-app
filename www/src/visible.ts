@@ -1,12 +1,6 @@
 import { TaskManager } from "./logic.js";
-import type { Task, TasksMap } from "./type.js";
+import type { SortType, Task, TasksMap } from "./type.js";
 import { toArray, toTaskMap } from "./utility.js";
-
-// 並び替えの種類
-export type SortType =
-  | "due-asc" | "due-desc"
-  | "created-asc" | "created-desc"
-  | "updated-asc" | "updated-desc";
 
 export class queryVisible {
     constructor(private manager: TaskManager) {}
