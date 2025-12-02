@@ -1,10 +1,11 @@
 import { TaskManager } from "./logic.js";
+import { defaultTask } from "./task.js";
 import { type TasksMap } from "./type.js";
-import { defaultTask, getFieldElement, toDateText } from "./utility.js";
+import { TaskUseCase } from "./usecase.js";
+import { getFieldElement, toDateText } from "./utility.js";
 import { queryVisible } from "./visible.js";
 
-const manager = new TaskManager();
-const visibleTasks = new queryVisible(manager);
+const app = new TaskUseCase(new TaskManager,new queryVisible(new TaskManager));
 
 const top_element = {
     "todo":document.getElementById('tpl-todo') as HTMLTemplateElement,
@@ -30,11 +31,11 @@ function render(tasks:TasksMap){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    render(visibleTasks.getVisbledTask());
+    render(app.getVisbledTask());
     // console.log(top_element.tasks.querySelectorAll('[data-id]'));
 })
 
 top_element.add.addEventListener('click',()=>{
-    manager.addTask(defaultTask());
-    render(manager.getDataAll());
+    app.addTask(defaultTask());
+    render(app.getVisbledTask());
 })
