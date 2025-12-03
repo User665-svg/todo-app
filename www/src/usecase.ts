@@ -8,8 +8,8 @@ export class TaskUseCase{
         private visibleTasks:queryVisible
     ){}
     // Visible Task
-    getVisbledTask(){
-        return this.visibleTasks.getVisbledTask();
+    getVisibledTask(){
+        return this.visibleTasks.getVisibleTask();
     }
     // Task maneger 
     addTask(task:Task){
@@ -19,4 +19,3 @@ export class TaskUseCase{
         return this.manaeger.getTask(id);
     }
 }
-
