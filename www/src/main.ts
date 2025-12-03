@@ -23,8 +23,10 @@ function render(tasks:TasksMap){
         const title = getFieldElement(task,"title")
         const content = getFieldElement(task,"content");
         const date = getFieldElement(task,"due-date");
+        const done = getFieldElement(task,"done");
         title.textContent = t.title !== "" ? t.title:"新規タスク";
         content.textContent = t.content !== "" ? t.content:"";
+        done.textContent = t.isDone == true ? "戻る":"完了"
         date.textContent = toDateText(new Date(t.dueDate))
         top_element.tasks.appendChild(task)
     }
@@ -46,6 +48,7 @@ top_element.tasks.addEventListener('click', (ev:PointerEvent) =>{
     const done = clickedGetElement(ev,"done");
     if(done){
         app.toggleTask(Number(id));
+        render(app.getVisbledTask())
     }
 
     const del = clickedGetElement(ev,"del");
