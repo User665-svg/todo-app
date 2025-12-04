@@ -3,6 +3,8 @@ export interface Task {
   content: string;
   dueDate: Date;
   isDone: boolean;
+  updatedAt:Date;
+  createdAt:Date;
 }
 
 export type TaskId = number;
@@ -14,6 +16,8 @@ export interface StoredTask {
   content: string;
   dueDate: string;
   isDone: boolean;
+  updatedAt:string;
+  createdAt:string;
 }
 
 export type StoredTasksMap = Record<number, StoredTask>;

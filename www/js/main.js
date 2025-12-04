@@ -1,7 +1,8 @@
+import { clickedGetElement, getFieldElement } from "./dom-utils.js";
 import { defaultTask } from "./task.js";
 import {} from "./type.js";
 import { TaskUseCase } from "./usecase.js";
-import { clickedGetElement, getFieldElement, toDateText } from "./utility.js";
+import { toDateText } from "./utility.js";
 import { queryVisible } from "./visible.js";
 const app = new TaskUseCase();
 const top_element = {
@@ -30,12 +31,12 @@ function render(tasks) {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    render(app.getVisbledTask());
+    render(app.getVisibledTask());
     // console.log(top_element.tasks.querySelectorAll('[data-id]'));
 });
 top_element.add.addEventListener('click', () => {
     app.addTask(defaultTask());
-    render(app.getVisbledTask());
+    render(app.getVisibledTask());
 });
 top_element.tasks.addEventListener('click', (ev) => {
     var _a;
@@ -45,12 +46,12 @@ top_element.tasks.addEventListener('click', (ev) => {
     const done = clickedGetElement(ev, "done");
     if (done) {
         app.toggleTask(Number(id));
-        render(app.getVisbledTask());
+        render(app.getVisibledTask());
     }
     const del = clickedGetElement(ev, "del");
     if (del) {
         app.deleteTask(Number(id));
-        render(app.getVisbledTask());
+        render(app.getVisibledTask());
     }
 });
 //# sourceMappingURL=main.js.map

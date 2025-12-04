@@ -57,20 +57,17 @@ export class TaskManager {
     this.getTask(id).isDone = flgDone;
     this.save();
   }
-
+  editTask(id:TaskId,editTask:Task){
+    const task = this.getTask(id);
+    if (task===editTask) return;
+    editTask.updatedAt = new Date();
+    
+  }
   // 全てのデータを取得する
   getDataAll():TasksMap{
     return this.tasks;
   }
 }
-
-
-const task1: Task = {
-  title: "買い物に行く",
-  content: "牛乳・卵・パンを買う",
-  dueDate: new Date("2025-12-05"),
-  isDone: false,
-};
 
 const manage = new TaskManager()
 // console.log(manage.getTask(1))

@@ -1,11 +1,14 @@
 export function defaultTask() {
     const d = new Date();
     d.setDate(d.getDate() + 7);
+    const now = new Date();
     const task = {
         title: "新規タスク",
         content: "",
         dueDate: d,
-        isDone: false
+        isDone: false,
+        updatedAt: now,
+        createdAt: now
     };
     return task;
 }
@@ -18,6 +21,8 @@ export function restoreTasks(stored) {
             content: t.content,
             dueDate: new Date(t.dueDate),
             isDone: t.isDone,
+            updatedAt: new Date(t.updatedAt),
+            createdAt: new Date(t.createdAt)
         };
     }
     return loaded;
@@ -32,6 +37,8 @@ export function buildStoredTasksMap(tasks) {
             content: t.content,
             dueDate: t.dueDate.toISOString(),
             isDone: t.isDone,
+            updatedAt: t.updatedAt.toISOString(),
+            createdAt: t.updatedAt.toISOString()
         };
     }
     return toStore;
