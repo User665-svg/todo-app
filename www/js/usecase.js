@@ -6,7 +6,7 @@ export class TaskUseCase {
         this.visibleTasks = new queryVisible(this.manaeger);
     }
     // Visible Task
-    getVisbledTask() {
+    getVisibledTask() {
         return this.visibleTasks.getVisibleTask();
     }
     // Task maneger 
