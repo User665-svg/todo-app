@@ -44,10 +44,8 @@ export class TaskManager {
         this.save();
     }
     editTask(id, editTask) {
-        const task = this.getTask(id);
-        if (task === editTask)
-            return;
-        editTask.updatedAt = new Date();
+        this.tasks[id] = editTask;
+        this.save();
     }
     // 全てのデータを取得する
     getDataAll() {
