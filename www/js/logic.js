@@ -2,7 +2,6 @@ import { read, write } from "./localStorage.js";
 import { buildStoredTasksMap, getMaxId, restoreTasks } from "./task.js";
 import { STORAGE_KEY } from "./type.js";
 import { toArray, toTaskMap } from "./utility.js";
-import isEqual from "lodash.isequal";
 // タスクを管理するクラス
 export class TaskManager {
     // ローカルストレージから復元する
@@ -46,10 +45,9 @@ export class TaskManager {
     }
     editTask(id, editTask) {
         const task = this.getTask(id);
-        const isEdited = isEqual(task, editTask);
-        if (isEdited) {
-            console.log("同じだよ～～～～～ん");
-        }
+        if (task === editTask)
+            return;
+        editTask.updatedAt = new Date();
     }
     // 全てのデータを取得する
     getDataAll() {

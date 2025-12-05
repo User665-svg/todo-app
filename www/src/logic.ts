@@ -8,7 +8,7 @@ import {
   type TasksMap 
 } from "./type.js";
 import { toArray, toTaskMap } from "./utility.js";
-import isEqual from "lodash.isequal";
+
 
 // タスクを管理するクラス
 export class TaskManager {
@@ -59,10 +59,9 @@ export class TaskManager {
   }
   editTask(id:TaskId,editTask:Task){
     const task = this.getTask(id);
-    const isEdited = isEqual(task,editTask);
-    if (isEdited){
-      console.log("同じだよ～～～～～ん");
-    }
+    if (task===editTask) return;
+    editTask.updatedAt = new Date();
+    
   }
   // 全てのデータを取得する
   getDataAll():TasksMap{
