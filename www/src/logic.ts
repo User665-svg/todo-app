@@ -59,9 +59,10 @@ export class TaskManager {
   }
   editTask(id:TaskId,editTask:Task){
     const task = this.getTask(id);
-    if (task===editTask) return;
-    editTask.updatedAt = new Date();
-    
+    const isEdited = isEqual(task,editTask);
+    if (isEdited){
+      console.log("同じだよ～～～～～ん");
+    }
   }
   // 全てのデータを取得する
   getDataAll():TasksMap{

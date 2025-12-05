@@ -48,12 +48,15 @@ top_element.tasks.addEventListener('click', (ev:PointerEvent) =>{
     const done = clickedGetElement(ev,"done");
     if(done){
         app.toggleTask(Number(id));
-        render(app.getVisibledTask())
+        render(app.getVisibledTask());
+        return;
     }
 
     const del = clickedGetElement(ev,"del");
     if(del){
         app.deleteTask(Number(id));
-        render(app.getVisibledTask())
+        render(app.getVisibledTask());
+        return;
     }
+    window.location.href = `/www/edit.html?id=${id}`
 })
