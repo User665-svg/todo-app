@@ -22,5 +22,8 @@ export class TaskUseCase {
     toggleTask(id) {
         return this.manaeger.toggleTask(id);
     }
+    editeTask(id, editedTask) {
+        return this.manaeger.editTask(id, editedTask);
+    }
 }
 //# sourceMappingURL=usecase.js.map

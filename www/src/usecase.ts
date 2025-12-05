@@ -22,5 +22,8 @@ export class TaskUseCase{
     toggleTask(id:TaskId){
         return this.manaeger.toggleTask(id);
     }
+    editeTask(id:TaskId,editedTask:Task){
+        return this.manaeger.editTask(id,editedTask);
+    }
 }
 

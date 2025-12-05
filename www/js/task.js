@@ -4,7 +4,7 @@ export function defaultTask() {
     const now = new Date();
     const task = {
         title: "新規タスク",
-        content: "",
+        content: "asdsasda",
         dueDate: d,
         isDone: false,
         updatedAt: now,

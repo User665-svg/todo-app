@@ -7,7 +7,7 @@ import {
   type TaskId, 
   type TasksMap 
 } from "./type.js";
-import { toArray, toTaskMap } from "./utility.js";
+import { isEqualTask, toArray, toTaskMap } from "./utility.js";
 
 
 // タスクを管理するクラス
@@ -44,6 +44,13 @@ export class TaskManager {
     const task = this.tasks[id]
     return task;
   }
+  setTask(id:TaskId,setTask:Task){
+      if (!this.tasks[id]) {
+      throw new Error(`Task not found. id=${id}`);
+    }
+    this.tasks[id] = setTask;
+    this.save();
+  }
   // 指定したIDのタスクを削除する
   deleteTask(id:TaskId){
     const tasks = toArray(this.tasks).filter(
@@ -54,14 +61,17 @@ export class TaskManager {
   }
   toggleTask(id:TaskId){
     const flgDone = !(this.getTask(id).isDone);
+    this.getTask(id).updatedAt = new Date();
     this.getTask(id).isDone = flgDone;
     this.save();
   }
   editTask(id:TaskId,editTask:Task){
     const task = this.getTask(id);
-    if (task===editTask) return;
+    const isEdited = isEqualTask(task,editTask);
+    if (!isEdited) return;
     editTask.updatedAt = new Date();
-    
+    this.setTask(id,editTask);
+    this.save()
   }
   // 全てのデータを取得する
   getDataAll():TasksMap{

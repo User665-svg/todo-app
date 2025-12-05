@@ -1,7 +1,7 @@
 import { read, write } from "./localStorage.js";
 import { buildStoredTasksMap, getMaxId, restoreTasks } from "./task.js";
 import { STORAGE_KEY } from "./type.js";
-import { toArray, toTaskMap } from "./utility.js";
+import { isEqualTask, toArray, toTaskMap } from "./utility.js";
 // タスクを管理するクラス
 export class TaskManager {
     // ローカルストレージから復元する
@@ -32,6 +32,13 @@ export class TaskManager {
         const task = this.tasks[id];
         return task;
     }
+    setTask(id, setTask) {
+        if (!this.tasks[id]) {
+            throw new Error(`Task not found. id=${id}`);
+        }
+        this.tasks[id] = setTask;
+        this.save();
+    }
     // 指定したIDのタスクを削除する
     deleteTask(id) {
         const tasks = toArray(this.tasks).filter(([key]) => key !== String(id));
@@ -40,14 +47,18 @@ export class TaskManager {
     }
     toggleTask(id) {
         const flgDone = !(this.getTask(id).isDone);
+        this.getTask(id).updatedAt = new Date();
         this.getTask(id).isDone = flgDone;
         this.save();
     }
     editTask(id, editTask) {
         const task = this.getTask(id);
-        if (task === editTask)
+        const isEdited = isEqualTask(task, editTask);
+        if (!isEdited)
             return;
         editTask.updatedAt = new Date();
+        this.setTask(id, editTask);
+        this.save();
     }
     // 全てのデータを取得する
     getDataAll() {
