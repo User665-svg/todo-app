@@ -32,6 +32,7 @@ export class TaskManager {
         const task = this.tasks[id];
         return task;
     }
+    // 指定したIDのタスクを上書きする
     setTask(id, setTask) {
         if (!this.tasks[id]) {
             throw new Error(`Task not found. id=${id}`);
@@ -45,12 +46,14 @@ export class TaskManager {
         this.tasks = toTaskMap(tasks);
         this.save();
     }
+    // 指定したIDのタスクのisDoneを変更する
     toggleTask(id) {
         const flgDone = !(this.getTask(id).isDone);
         this.getTask(id).updatedAt = new Date();
         this.getTask(id).isDone = flgDone;
         this.save();
     }
+    // 指定した ID のタスクを編集する
     editTask(id, editTask) {
         const task = this.getTask(id);
         const isEdited = isEqualTask(task, editTask);

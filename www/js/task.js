@@ -3,8 +3,8 @@ export function defaultTask() {
     d.setDate(d.getDate() + 7);
     const now = new Date();
     const task = {
-        title: "新規タスク",
-        content: "asdsasda",
+        title: "",
+        content: "",
         dueDate: d,
         isDone: false,
         updatedAt: now,

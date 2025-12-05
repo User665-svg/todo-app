@@ -21,6 +21,7 @@ export function toTaskMap(ArrTask:[string,Task][]){
 
 export function isEqualTask(task1:Task,task2:Task){
   let changeedFlg = false;
+  
   type Field  = "title"|"content"|"dueDate"|'isDone';
 
   const isDiffTask:Record<Field,boolean> = {

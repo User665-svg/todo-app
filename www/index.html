@@ -12,37 +12,71 @@
     <script src="js/main.js" type="module"></script>
     <link href="./css/output.css" rel="stylesheet">
 </head>
-<body class="dark:bg-slate-950">
-    <header class="fixed top-0 w-full pb-4 bg-linear-to-b from-slate-900 to-slate-950 font-extrabold text-3xl text-white/30">
+
+<body class="bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <header
+      class="fixed top-0 w-full pb-4 
+             bg-linear-to-b from-slate-300 to-slate-100
+             text-slate-700
+             dark:bg-linear-to-b dark:from-slate-900 dark:to-slate-950 
+             dark:text-white/30
+             font-extrabold text-3xl">
         <div class="mx-6 pt-3.5 font-serif">
-            SimpleToDo
+            Consilia
         </div>
         <div class="flex justify-center text-[1rem] mt-2">
-            <input type="search" placeholder="検索" class="border-2 rounded-2xl text-[1rem] py-1.5 px-1.5 focus:outline-none focus:ring-2 focus:ring-sky-400">
-            <input type="button" class="bg-white/10 hover:bg-white/20 px-2 mx-2 rounded-2xl" value="検索">
+            <input
+              type="search"
+              placeholder="検索"
+              class="border-2 rounded-2xl text-[1rem] py-1.5 px-1.5
+                     bg-white text-slate-900
+                     focus:outline-none 
+                     dark:bg-slate-900 dark:text-white/50 dark:border-white/50">
+            <input
+              type="button"
+              class="px-2 mx-2 rounded-2xl
+                     bg-slate-900 text-slate-50 hover:bg-slate-800
+                     dark:bg-white/10 dark:text-white/50 dark:hover:bg-white/20"
+              value="検索">
         </div>
+
         <div class="ml-6 text-[1rem] mt-3">
-            <select id="sort" class="text-white/40 px-2 rounded-2xl border-2 mr-1.5">
-                <option value="" class="bg-slate-800">作成日時</option>
-                <option value="" class="bg-slate-800">期限日時</option>
-                <option value="" class="bg-slate-800">更新日時</option>
+            <select id="sort"
+              class="px-2 rounded-2xl border-2 mr-1.5
+                     bg-white text-slate-700
+                     dark:bg-slate-900 dark:text-white/40">
+                <option value="" class="bg-slate-100 dark:bg-slate-800">作成日時</option>
+                <option value="" class="bg-slate-100 dark:bg-slate-800">期限日時</option>
+                <option value="" class="bg-slate-100 dark:bg-slate-800">更新日時</option>
             </select>
-            <select id="" class="text-white/40 px-2 rounded-2xl border-2 mr-1.5">
-                <option class="bg-slate-800">昇順</option>
-                <option class="bg-slate-800">降順</option>
+
+            <select
+              class="px-2 rounded-2xl border-2 mr-1.5
+                     bg-white text-slate-700
+                     dark:bg-slate-900 dark:text-white/40">
+                <option class="bg-slate-100 dark:bg-slate-800">昇順</option>
+                <option class="bg-slate-100 dark:bg-slate-800">降順</option>
             </select>
-            <select id="checked" class="text-white/40 px-2 rounded-2xl border-2">
-                <option value="todo" class="bg-slate-800">未完了</option>
-                <option value="checked" class="bg-slate-800">完了</option>
+
+            <select id="checked"
+              class="px-2 rounded-2xl border-2
+                     bg-white text-slate-700
+                     dark:bg-slate-900 dark:text-white/40">
+                <option value="todo" class="bg-slate-100 dark:bg-slate-800">未完了</option>
+                <option value="checked" class="bg-slate-100 dark:bg-slate-800">完了</option>
             </select>
         </div>
     </header>
     <main class="mt-[150px]">
-        <ul id="tasks" class="text-white mx-6 mb-[220px]">
+        <ul id="tasks" class="mx-6 mb-[150px]">
         </ul>
         <div class="fixed bottom-15 right-5">
-            <div id="add-btn" class="text-white/70 m-4 p-4 bg-slate-600/40 hover:bg-slate-600/60 rounded-full text-center cursor-pointer">+</div>
-            <div id="checked-btn" class="text-white/70 m-4 p-4 bg-slate-600/40 hover:bg-slate-600/60 rounded-full text-center cursor-pointer">✓</div>
+            <div id="add-btn"
+              class="m-4 p-4 rounded-full text-center cursor-pointer
+                     bg-slate-400/70 text-slate-900 hover:bg-slate-800
+                     dark:bg-slate-600/60 dark:text-white/70 dark:hover:bg-slate-600/60">
+              +
+            </div>
         </div>
     </main>
     <!-- 
@@ -54,16 +88,39 @@
                 -- del      削除
     -->
     <template id="tpl-todo">
-        <li class="task mb-4 border border-white/10  bg-white/5 p-3 rounded-2xl"> <!--data属性で分ける-->
-            <div class="flex justify-between items-center"> 
-                <div class="title text-3xl my-1 text-white/70">タイトル</div>
-                <div class="due-date text-white/35">期限</div>
+        <li
+          class="task mb-4 p-3 rounded-2xl border
+                 bg-white border-slate-200 text-slate-800
+                 shadow-sm
+                 dark:bg-white/5 dark:border-white/10 dark:text-white/80">
+            <div class="flex justify-between items-center">
+                <div class="title text-3xl my-1 
+                            text-slate-900 dark:text-white/70">
+                    タイトル
+                </div>
+                <div class="due-date 
+                            text-slate-500 dark:text-white/35">
+                    期限
+                </div>
             </div>
             <div class="flex justify-between items-center">
-                <div class="content text-white/35 line-clamp-2 wrap-break-word mr-5">内容</div>
+                <div class="content mr-5 line-clamp-2 wrap-break-word
+                            text-slate-600 dark:text-white/35">
+                    内容
+                </div>
                 <div class="flex">
-                    <div class="done mx-1 bg-sky-400/30 px-2 py-1.5 items-center rounded-2xl cursor-pointer hover:bg-sky-300/30 text-nowrap">完了</div>
-                    <div class="del ml-1 bg-red-400/30 px-2 py-1.5 items-center rounded-2xl cursor-pointer hover:bg-red-300/30 text-nowrap">削除</div>
+                    <div
+                      class="done mx-1 px-2 py-1.5 items-center rounded-2xl cursor-pointer text-nowrap
+                             bg-sky-500/20 text-sky-800 hover:bg-sky-500/30
+                             dark:bg-sky-400/30 dark:text-sky-50 dark:hover:bg-sky-300/30">
+                      完了
+                    </div>
+                    <div
+                      class="del ml-1 px-2 py-1.5 items-center rounded-2xl cursor-pointer text-nowrap
+                             bg-red-500/20 text-red-800 hover:bg-red-500/30
+                             dark:bg-red-400/30 dark:text-red-50 dark:hover:bg-red-300/30">
+                      削除
+                    </div>
                 </div>
             </div>
         </li>

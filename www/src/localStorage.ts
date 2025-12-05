@@ -11,22 +11,22 @@ export function read<T>(key: string, defaultValue: T): T {
   }
 }
 
-export function add<T>(key: string, value: T): void {
-  const data = read<T[]>(key, []);
-  data.push(value);
-  write<T[]>(key, data);
-}
+// export function add<T>(key: string, value: T): void {
+//   const data = read<T[]>(key, []);
+//   data.push(value);
+//   write<T[]>(key, data);
+// }
 
-export function edit<T>(key: string, index: number, value: T): void {
-  const data = read<T[]>(key, []);
+// export function edit<T>(key: string, index: number, value: T): void {
+//   const data = read<T[]>(key, []);
 
-  if (index < 0 || index >= data.length) {
-    throw new Error(`Index out of range: index=${index}, length=${data.length}`);
-  }
+//   if (index < 0 || index >= data.length) {
+//     throw new Error(`Index out of range: index=${index}, length=${data.length}`);
+//   }
 
-  data[index] = value;
-  write<T[]>(key, data);
-}
+//   data[index] = value;
+//   write<T[]>(key, data);
+// }
 
 
 // 汎用の write

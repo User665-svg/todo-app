@@ -11,19 +11,19 @@ export function read(key, defaultValue) {
         return defaultValue;
     }
 }
-export function add(key, value) {
-    const data = read(key, []);
-    data.push(value);
-    write(key, data);
-}
-export function edit(key, index, value) {
-    const data = read(key, []);
-    if (index < 0 || index >= data.length) {
-        throw new Error(`Index out of range: index=${index}, length=${data.length}`);
-    }
-    data[index] = value;
-    write(key, data);
-}
+// export function add<T>(key: string, value: T): void {
+//   const data = read<T[]>(key, []);
+//   data.push(value);
+//   write<T[]>(key, data);
+// }
+// export function edit<T>(key: string, index: number, value: T): void {
+//   const data = read<T[]>(key, []);
+//   if (index < 0 || index >= data.length) {
+//     throw new Error(`Index out of range: index=${index}, length=${data.length}`);
+//   }
+//   data[index] = value;
+//   write<T[]>(key, data);
+// }
 // 汎用の write
 export function write(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
