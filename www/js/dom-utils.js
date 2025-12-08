@@ -1,4 +1,4 @@
-import { top_element } from "./main";
+import { top_element } from "./main.js";
 export function getFieldElement(taskEl, field) {
     const el = taskEl.querySelector(`.${field}`);
     if (!el)

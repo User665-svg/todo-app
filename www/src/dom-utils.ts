@@ -1,4 +1,4 @@
-import { top_element } from "./main";
+import { top_element } from "./main.js";
 import type { SortField, SortOrder } from "./type";
 import type { TaskUseCase } from "./usecase";
 

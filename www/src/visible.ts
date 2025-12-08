@@ -28,7 +28,6 @@ export class queryVisible {
 
     /** ストラテジ風ソート */
     private sortTasks(tasks: [number, Task][], field: SortField, order: SortOrder): [number, Task][] {
-        console.log(field,order)
         const fieldSelector: Record<SortField, (t: Task) => number> = {
             due:     (t) => t.dueDate.getTime(),
             created: (t) => t.createdAt?.getTime() ?? 0,

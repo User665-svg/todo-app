@@ -21,7 +21,6 @@ export class queryVisible {
     }
     /** ストラテジ風ソート */
     sortTasks(tasks, field, order) {
-        console.log(field, order);
         const fieldSelector = {
             due: (t) => t.dueDate.getTime(),
             created: (t) => { var _a, _b; return (_b = (_a = t.createdAt) === null || _a === void 0 ? void 0 : _a.getTime()) !== null && _b !== void 0 ? _b : 0; },
