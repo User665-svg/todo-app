@@ -1,9 +1,9 @@
 var _a;
-import { clickedGetElement, getFieldElement, updateVisible } from "./dom-utils.js";
-import { defaultTask } from "./task.js";
-import {} from "./type.js";
-import { TaskUseCase } from "./usecase.js";
-import { toDateText } from "./utility.js";
+import { clickedGetElement, getFieldElement, updateVisible } from "./../lib/dom-utils.js";
+import { defaultTask } from "./../lib/task.js";
+import {} from "./../lib/type.js";
+import { TaskUseCase } from "./../usecase.js";
+import { toDateText } from "./../lib/utility.js";
 const app = new TaskUseCase();
 export const top_element = {
     "test": document.getElementById('test'),

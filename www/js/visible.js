@@ -1,5 +1,5 @@
 import { TaskManager } from "./logic.js";
-import { toArray, toTaskMap } from "./utility.js";
+import { toArray, toTaskMap } from "./lib/utility.js";
 export class queryVisible {
     constructor(manager) {
         this.manager = manager;

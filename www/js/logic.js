@@ -1,7 +1,7 @@
-import { read, write } from "./localStorage.js";
-import { buildStoredTasksMap, getMaxId, restoreTasks } from "./task.js";
-import { STORAGE_KEY } from "./type.js";
-import { isEqualTask, toArray, toTaskMap } from "./utility.js";
+import { read, write } from "./lib/localStorage.js";
+import { buildStoredTasksMap, getMaxId, restoreTasks } from "./lib/task.js";
+import { STORAGE_KEY } from "./lib/type.js";
+import { isEqualTask } from "./lib/utility.js";
 // タスクを管理するクラス
 export class TaskManager {
     // ローカルストレージから復元する

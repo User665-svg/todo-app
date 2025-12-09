@@ -1,6 +1,6 @@
-import { top_element } from "./main.js";
-import type { SortField, SortOrder } from "./type";
-import type { TaskUseCase } from "./usecase";
+import { top_element } from "./../page/main.js";
+import type { SortField, SortOrder } from "./type.js";
+import type { TaskUseCase } from "../usecase.js";
 
 export function getFieldElement(taskEl:DocumentFragment,field:string) {
     const el = taskEl.querySelector(`.${field}`) as HTMLElement | null;

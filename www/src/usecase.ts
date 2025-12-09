@@ -1,5 +1,5 @@
 import { TaskManager } from "./logic.js";
-import type { SortField, SortOrder, Task, TaskId, TasksMap } from "./type.js";
+import type { SortField, SortOrder, Task, TaskId, TasksMap } from "./lib/type.js";
 import { queryVisible } from "./visible.js";
 
 export class TaskUseCase{

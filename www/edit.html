@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>タスク作成・編集</title>
   <link href="./css/output.css" rel="stylesheet" />
+  <script type="module" src="./js/page/edit.js"></script>
 </head>
 <body class="dark:bg-slate-950 h-screen flex flex-col">
 
   <!-- ボタンエリア -->
   <div class="flex mt-6 mb-6 ml-6 text-white">
-    <input type="button" class="bg-white/10 hover:bg-white/20 px-2 mx-2 rounded-2xl" value="戻る">
-    <input type="button" class="bg-sky-400 hover:bg-sky-300/30 ml-1 px-2 rounded-2xl" value="保存">
+    <input id="quit" type="button" class="bg-white/10 hover:bg-white/20 px-2 mx-2 rounded-2xl" value="戻る">
+    <input id="save" type="button" class="bg-sky-400 hover:bg-sky-300/30 ml-1 px-2 rounded-2xl" value="保存">
+    <input type="date" class="appearance-auto invert-50">
   </div>
 
   <!-- タイトル入力 -->
   <div class="px-6 mb-4">
     <input 
+      id="title"
       type="text"
       placeholder="タイトルを入力"
       class="w-full bg-white/10 text-white/70 px-3 py-2 rounded-lg 
@@ -27,6 +30,7 @@
   <!-- 内容入力 -->
   <div class="px-6 flex-1 pb-5">
     <textarea
+    id="content"
       placeholder="内容を入力"
       class="w-full h-full bg-white/10 text-white/40 px-3 py-2 rounded-lg
              border-2 border-white/20 focus:outline-none focus:ring-2 focus:ring-sky-400

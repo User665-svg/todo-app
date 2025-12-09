@@ -1,6 +1,6 @@
 import { TaskManager } from "./logic.js";
-import type { SortField, SortOrder, Task, TasksMap } from "./type.js";
-import { toArray, toTaskMap } from "./utility.js";
+import type { SortField, SortOrder, Task, TasksMap } from "./lib/type.js";
+import { toArray, toTaskMap } from "./lib/utility.js";
 
 export class queryVisible {
     constructor(private manager: TaskManager) {}
