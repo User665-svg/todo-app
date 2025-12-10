@@ -20,6 +20,7 @@ export class queryVisible {
             task.content.toLowerCase().includes(k)
         );
     }
+    // タスクの完了フィルタ
     private filterByDone(tasks: [number, Task][], flg:boolean):[number,Task][]{
         return tasks.filter(([id,task])=>
             task.isDone === flg

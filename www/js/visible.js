@@ -16,6 +16,7 @@ export class queryVisible {
         return tasks.filter(([_, task]) => task.title.toLowerCase().includes(k) ||
             task.content.toLowerCase().includes(k));
     }
+    // タスクの完了フィルタ
     filterByDone(tasks, flg) {
         return tasks.filter(([id, task]) => task.isDone === flg);
     }

@@ -24,6 +24,7 @@
     "devDependencies": {
         "browser-sync": "^2.27.7",
         "cordova": "^11.0.0",
+        "ts-node": "^10.9.2",
         "typescript": "^5.9.3"
     }
 }

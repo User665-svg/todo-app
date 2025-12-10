@@ -32,4 +32,3 @@ export class TaskUseCase{
         return this.manaeger.editTask(id,editedTask);
     }
 }
-

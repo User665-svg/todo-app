@@ -1,4 +1,4 @@
-import { read, write } from "./lib/localStorage.js";
+import { createBrowserStorage, createMemoryStorage, read, write } from "./lib/localStorage.js";
 import { buildStoredTasksMap, getMaxId, restoreTasks } from "./lib/task.js";
 import { STORAGE_KEY } from "./lib/type.js";
 import { isEqualTask } from "./lib/utility.js";
@@ -8,14 +8,15 @@ export class TaskManager {
     constructor() {
         this.tasks = new Map();
         this.nextId = 1;
-        const stored = read(STORAGE_KEY, {});
+        this.storage = createMemoryStorage();
+        const stored = read(this.storage, STORAGE_KEY, {});
         this.tasks = restoreTasks(stored);
         this.nextId = getMaxId(stored) + 1;
     }
     // 現在の状態をローカルストレージに保存する
     save() {
         const toStore = buildStoredTasksMap(this.tasks);
-        write(STORAGE_KEY, toStore);
+        write(this.storage, STORAGE_KEY, toStore);
     }
     // 新しいタスクを追加する
     addTask(task) {
