@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./css/output.css" rel="stylesheet" />
+</head>
+<body>
+<!-- 全体レイアウト用ラッパー -->
+<div class="min-h-screen bg-slate-100 dark:bg-slate-900 flex items-center justify-center px-4">
+  <form
+    id="todo-edit-form"
+    class="w-full max-w-xl bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 space-y-6"
+  >
+    <!-- タイトル -->
+    <h1 class="text-xl font-semibold text-slate-800 dark:text-slate-100">
+      TODO 編集
+    </h1>
+
+    <!-- タイトル入力 -->
+    <div class="space-y-1">
+      <label for="title" class="block text-sm font-medium text-slate-700 dark:text-slate-200">
+        タイトル
+      </label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm
+               text-slate-900 shadow-sm outline-none
+               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400/40
+               dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+        placeholder="例：買い物リストを整理する"
+      />
+    </div>
+
+    <!-- 内容 -->
+    <div class="space-y-1">
+      <label for="content" class="block text-sm font-medium text-slate-700 dark:text-slate-200">
+        内容
+      </label>
+      <textarea
+        id="content"
+        name="content"
+        rows="4"
+        class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm
+               text-slate-900 shadow-sm outline-none
+               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400/40
+               dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+        placeholder="詳細メモをここに書く..."
+      ></textarea>
+    </div>
+
+    <!-- 期限 -->
+    <div class="space-y-1">
+      <label for="dueDate" class="block text-sm font-medium text-slate-700 dark:text-slate-200">
+        期限
+      </label>
+      <input
+        id="dueDate"
+        name="dueDate"
+        type="date"
+        class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm
+               text-slate-900 shadow-sm outline-none
+               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400/40
+               dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+      />
+    </div>
+
+    <!-- 繰り返し -->
+    <div class="space-y-1">
+      <div class="flex items-center justify-between gap-2">
+        <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
+          繰り返し
+        </label>
+
+        <!-- 繰り返しON/OFF (オプション) -->
+        <label class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-300">
+          <input
+            id="repeatEnabled"
+            name="repeatEnabled"
+            type="checkbox"
+            class="rounded border-slate-300 text-indigo-500
+                   focus:ring-indigo-400/60 dark:border-slate-500"
+          />
+          有効にする
+        </label>
+      </div>
+
+      <div class="flex gap-2">
+        <!-- 回数 -->
+        <input
+          id="repeatCount"
+          name="repeatCount"
+          type="number"
+          min="1"
+          class="w-24 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm
+                 text-slate-900 shadow-sm outline-none
+                 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400/40
+                 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100
+                 disabled:cursor-not-allowed disabled:bg-slate-100
+                 dark:disabled:bg-slate-800"
+          placeholder="1"
+        />
+
+        <!-- 単位 -->
+        <select
+          id="repeatUnit"
+          name="repeatUnit"
+          class="flex-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm
+                 text-slate-900 shadow-sm outline-none
+                 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400/40
+                 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100
+                 disabled:cursor-not-allowed disabled:bg-slate-100
+                 dark:disabled:bg-slate-800"
+        >
+          <option value="day">日ごと</option>
+          <option value="week">週ごと</option>
+          <option value="month">月ごと</option>
+        </select>
+      </div>
+
+      <p class="text-xs text-slate-500 dark:text-slate-400">
+        例：3 日ごと、1 週ごと、1 ヶ月ごと など
+      </p>
+    </div>
+
+    <!-- 優先度 -->
+    <div class="space-y-1">
+      <span class="block text-sm font-medium text-slate-700 dark:text-slate-200">
+        優先度
+      </span>
+
+      <div class="flex gap-2">
+        <!-- 高 -->
+        <label
+          class="flex-1 cursor-pointer rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs
+                 text-slate-800 shadow-sm transition
+                 hover:border-red-400 hover:bg-red-50
+                 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100
+                 dark:hover:border-red-400 dark:hover:bg-red-950/40"
+        >
+          <input
+            type="radio"
+            name="priority"
+            value="high"
+            class="mr-2 accent-red-500"
+          />
+          高
+        </label>
+
+        <!-- 中 -->
+        <label
+          class="flex-1 cursor-pointer rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs
+                 text-slate-800 shadow-sm transition
+                 hover:border-amber-400 hover:bg-amber-50
+                 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100
+                 dark:hover:border-amber-400 dark:hover:bg-amber-950/40"
+        >
+          <input
+            type="radio"
+            name="priority"
+            value="medium"
+            class="mr-2 accent-amber-500"
+            checked
+          />
+          中
+        </label>
+
+        <!-- 低 -->
+        <label
+          class="flex-1 cursor-pointer rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs
+                 text-slate-800 shadow-sm transition
+                 hover:border-emerald-400 hover:bg-emerald-50
+                 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100
+                 dark:hover:border-emerald-400 dark:hover:bg-emerald-950/40"
+        >
+          <input
+            type="radio"
+            name="priority"
+            value="low"
+            class="mr-2 accent-emerald-500"
+          />
+          低
+        </label>
+      </div>
+    </div>
+
+    <!-- ボタン -->
+    <div class="flex justify-end gap-3 pt-2">
+      <button
+        type="button"
+        class="rounded-xl border border-slate-300 px-4 py-2 text-sm
+               text-slate-700 hover:bg-slate-100
+               dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800"
+      >
+        キャンセル
+      </button>
+
+      <button
+        type="submit"
+        class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium
+               text-white shadow hover:bg-indigo-700
+               focus:outline-none focus:ring-2 focus:ring-indigo-400/80"
+      >
+        保存
+      </button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-import { LocalStorageMock } from "../test/localstorage.js";
+import { LocalStorageMock } from "../test/localStorageMock.js";
 /**
  * 本番用のローカルストレージ
  */

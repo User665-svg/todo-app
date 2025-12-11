@@ -56,4 +56,3 @@ sampleTasks.forEach(task => {
     app.addTask(task);
 });
 
-

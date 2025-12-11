@@ -26,6 +26,7 @@ export class TaskManager {
   private save() {
     const toStore: StoredTasksMap = buildStoredTasksMap(this.tasks);
     write<StoredTasksMap>(this.storage,STORAGE_KEY, toStore);
+    
   }
 
   // 新しいタスクを追加する
