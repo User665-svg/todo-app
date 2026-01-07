@@ -5,7 +5,7 @@ export interface Task {
     isDone: boolean;
     updatedAt: Date;
     createdAt: Date;
-    priorty?: "low" | "medium" | "high";
+    priority?: TaskPriority;
     repeat?: Repeat;
     seriesId?: number;
     isTemplate?: boolean;
@@ -20,7 +20,7 @@ export interface StoredTask {
     isDone: boolean;
     updatedAt: string;
     createdAt: string;
-    priorty?: "low" | "medium" | "high";
+    priority?: TaskPriority;
     repeat?: Repeat;
     seriesId?: number;
     isTemplate?: boolean;
@@ -35,4 +35,5 @@ export declare const STORAGE_KEY = "tasks";
 export type SortField = "due" | "created" | "updated";
 export type SortOrder = "asc" | "desc";
 export type FormLabel = "title" | "content" | "dueDate" | "priority" | "repeatEnabled" | "repeatCount" | "repeatUnit";
+export type TaskPriority = "low" | "medium" | "high" | "";
 //# sourceMappingURL=type.d.ts.map

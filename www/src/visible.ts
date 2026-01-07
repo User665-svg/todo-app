@@ -63,6 +63,7 @@ export class queryVisible {
         tasks = this.sortTasks(tasks, option.sortBy,option.sorttype);
         // console.log(tasks)
         // console.log(toTaskMap(tasks))
-    return toTaskMap(tasks);
+        // console.log(tasks)
+        return toTaskMap(tasks);
     }
 }

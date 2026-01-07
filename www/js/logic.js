@@ -58,7 +58,8 @@ export class TaskManager {
     editTask(id, editTask) {
         const task = this.getTask(id);
         const isEdited = isEqualTask(task, editTask);
-        if (isEdited)
+        console.log("isEdited:" + isEdited);
+        if (!isEdited)
             return;
         editTask.updatedAt = new Date();
         this.setTask(id, editTask);

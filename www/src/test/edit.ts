@@ -27,10 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     edit_element.title.value = task.title;
     edit_element.content.value = task.content;
     edit_element.dueDate.valueAsDate = task.dueDate;
-    console.log(task.priorty);
     // 優先度の設定
-    if (task.priorty !== undefined) {
-        document.querySelector<HTMLInputElement>(`input[value=${task.priorty}]`)!.checked = true;
+    if (task.priority !== undefined) {
+        document.querySelector<HTMLInputElement>(`input[value=${task.priority}]`)!.checked = true;
     }
     // 繰り返し設定
     if (task.repeat) {
@@ -57,6 +56,7 @@ edit.addEventListener("submit", (e) => {
     if (!strId) return;
     const id = Number(strId);
     const task = app.getTask(id);
+    console.log(priority);
     const editedTask:Task = {
         title: title,
         content: content,
@@ -64,7 +64,7 @@ edit.addEventListener("submit", (e) => {
         isDone: task.isDone,
         updatedAt: task.updatedAt,
         createdAt: task.createdAt,
-        ...(priority !== undefined && { priorty: priority as "low" | "medium" | "high" }),
+        ...(priority !== null && { priority: priority as "low" | "medium" | "high" }),
         ...(repeatEnabled === "on" &&
         {
             repeat:

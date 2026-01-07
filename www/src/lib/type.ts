@@ -8,7 +8,7 @@ export interface Task {
   isDone: boolean;
   updatedAt:Date;
   createdAt:Date;
-  priorty?: "low" | "medium" | "high";
+  priority?: TaskPriority;
   repeat?: Repeat;
 
   seriesId?: number;
@@ -27,7 +27,7 @@ export interface StoredTask {
   isDone: boolean;
   updatedAt:string;
   createdAt:string;
-  priorty?: "low" | "medium" | "high";
+  priority?: TaskPriority;
   repeat?: Repeat;
 
   seriesId?: number;
@@ -50,3 +50,5 @@ export type SortOrder = "asc" | "desc";
 
 // フォームラベルの型定義
 export type FormLabel = "title" | "content" | "dueDate" | "priority" | "repeatEnabled" | "repeatCount" | "repeatUnit";
+// プロパティの型定義
+export type TaskPriority = "low" | "medium" | "high" | "";

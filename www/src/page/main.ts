@@ -1,6 +1,5 @@
-import { clickedGetElement, getFieldElement, updateVisible } from "./../lib/dom-utils.js";
+import { clickedGetElement, getFieldElement, taskBorderColor, updateVisible } from "./../lib/dom-utils.js";
 import { defaultTask } from "./../lib/task.js";
-import { type Task } from "./../lib/type.js";
 import { TaskUseCase } from "./../usecase.js";
 import { toDateText } from "./../lib/utility.js";
 
@@ -26,6 +25,9 @@ function render(){
         const task = top_element.todo.content.cloneNode(true) as DocumentFragment;
         const li = task.querySelector('li');
         li?.setAttribute('data-id',String(idx));
+        li?.classList.add(...taskBorderColor(t.priority).split(" "));
+        // console.log(li?.className);
+        // console.log(idx,t);
         const title = getFieldElement(task,"title")
         const content = getFieldElement(task,"content");
         const date = getFieldElement(task,"due-date");
@@ -39,6 +41,7 @@ function render(){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
+    //console.log("DOMContentLoaded");
     render();
     // console.log(top_element.tasks.querySelectorAll('[data-id]'));
 })

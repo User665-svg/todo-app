@@ -33,7 +33,8 @@ export const sampleTasks: Task[] = [
         dueDate: new Date("2025-12-07"),
         isDone: false,
         updatedAt: new Date("2025-12-05T08:00:00"),
-        createdAt: new Date("2025-12-05T07:45:00")
+        createdAt: new Date("2025-12-05T07:45:00"),
+        priority:"high"
     },
     {
         title: "掃除",
@@ -57,7 +58,7 @@ export const sampleTasks: Task[] = [
         isDone: false,
         updatedAt: new Date("2025-12-06T14:00:00"),
         createdAt: new Date("2025-12-05T16:30:00"),
-        priorty:"low",
+        priority:"low",
         repeat:{ enabled:true, count:2, unit:"month"}
     }
 ];

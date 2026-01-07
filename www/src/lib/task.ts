@@ -26,11 +26,13 @@ export function restoreTasks(stored:StoredTasksMap){
         isDone: t.isDone,
         updatedAt:new Date(t.updatedAt),
         createdAt:new Date(t.createdAt),
-        ...(t.priorty !== undefined && { priorty: t.priorty }),
+        ...(t.priority !== undefined && { priority: t.priority }),
         ...(t.repeat !== undefined && { repeat: t.repeat }),
         ...(t.isTemplate !== undefined && { isTemplate: t.isTemplate }),
         ...(t.seriesId !== undefined && { seriesId: t.seriesId }),
       };
+      
+      // console.log("task.ts",id,t.priority,task);
       loaded.set(id, task);
     }
     return loaded;
@@ -48,7 +50,7 @@ export function buildStoredTasksMap(tasks:TasksMap){
         isDone: t.isDone,
         updatedAt:t.updatedAt.toISOString(),
         createdAt:t.createdAt.toISOString(),
-        ...(t.priorty !== undefined && { priorty: t.priorty }),
+        ...(t.priority !== undefined && { priority: t.priority }),
         ...(t.repeat !== undefined && { repeat: t.repeat }),
         ...(t.isTemplate !== undefined && { isTemplate: t.isTemplate }),
         ...(t.seriesId !== undefined && { seriesId: t.seriesId })

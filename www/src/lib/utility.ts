@@ -24,16 +24,17 @@ export function toTaskMap(ArrTask:[TaskId,Task][]){
 export function isEqualTask(task1:Task,task2:Task){
   let changeedFlg = false;
   
-  type Field  = "title"|"content"|"dueDate"|'isDone';
+  type Field  = "title"|"content"|"dueDate"|'isDone'|"priority";
 
   const isDiffTask:Record<Field,boolean> = {
     title:   task1.title   === task2.title,
     content: task1.content === task2.content,
-    dueDate: task1.dueDate === task1.dueDate,
+    dueDate: task1.dueDate === task2.dueDate,
     isDone:  task1.isDone  === task2.isDone,
+    priority: task1.priority === task2.priority
   };
 
-  const fields: Field[] = ["title", "content", "dueDate", "isDone"];
+  const fields: Field[] = ["title", "content", "dueDate", "isDone","priority"];
 
   for (const flg of fields) {
     if (!isDiffTask[flg]){
