@@ -2,9 +2,9 @@ import {} from "../lib/type.js";
 import { TaskUseCase } from "../usecase.js";
 import { sampleTasks } from "./testTask.js";
 const app = new TaskUseCase();
-sampleTasks.forEach(task => {
-    app.addTask(task);
-});
+// sampleTasks.forEach(task => {
+//     app.addTask(task);
+// });
 const edit_element = {
     "title": document.getElementById('title'), // タイトル
     "content": document.getElementById('content'), // 内容
@@ -15,10 +15,11 @@ const edit_element = {
 };
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
-    // const strId = params.get('id');
-    // if (!strId) return;
-    // const id = Number(strId);
-    const id = 7; // テスト用に固定IDを使用
+    const strId = params.get('id');
+    if (!strId)
+        return;
+    const id = Number(strId);
+    // const id = 7; // テスト用に固定IDを使用
     const task = app.getTask(id);
     edit_element.title.value = task.title;
     edit_element.content.value = task.content;
@@ -39,16 +40,38 @@ const edit = document.getElementById("todo-edit-form");
 edit.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(edit);
-    const title = getFormDataKey(formData, "title"); /** *追加 */
+    const title = getFormDataKey(formData, "title");
     const content = getFormDataKey(formData, "content");
     const dueDateStr = getFormDataKey(formData, "dueDate");
     const priority = getFormDataKey(formData, "priority");
     const repeatEnabled = getFormDataKey(formData, "repeatEnabled");
     const repeatCount = getFormDataKey(formData, "repeatCount");
     const repeatUnit = getFormDataKey(formData, "repeatUnit");
-    formData.forEach((value, key) => {
-        console.log(`${key}- ${value}`);
-    });
+    const params = new URLSearchParams(window.location.search);
+    const strId = params.get('id');
+    if (!strId)
+        return;
+    const id = Number(strId);
+    const task = app.getTask(id);
+    const editedTask = Object.assign(Object.assign({ title: title, content: content, dueDate: new Date(dueDateStr), isDone: task.isDone, updatedAt: task.updatedAt, createdAt: task.createdAt }, (priority !== undefined && { priorty: priority })), (repeatEnabled === "on" &&
+        {
+            repeat: {
+                enabled: true,
+                count: Number(repeatCount),
+                unit: repeatUnit
+            }
+        }));
+    // タスクを編集
+    app.editeTask(id, editedTask);
+    // 一覧ページにリダイレクト
+    window.location.href = "./index.html";
+});
+/** キャンセルボタンの処理 */
+const cancelBtn = document.getElementById("cancel-btn");
+cancelBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // 一覧ページにリダイレクト
+    window.location.href = "./index.html";
 });
 /** フォームデータから特定のキーの値を取得するヘルパー関数 */
 function getFormDataKey(formData, label) {

@@ -61,7 +61,7 @@ top_element.tasks.addEventListener('click', (ev) => {
         render();
         return;
     }
-    window.location.href = `/www/edit.html?id=${id}`;
+    window.location.href = `/www/edit_AI.html?id=${id}`;
 });
 top_element.searchBtn.addEventListener('click', render);
 top_element.field.addEventListener('change', render);

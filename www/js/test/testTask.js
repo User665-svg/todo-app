@@ -59,8 +59,8 @@ export const sampleTasks = [
         repeat: { enabled: true, count: 2, unit: "month" }
     }
 ];
-sampleTasks.forEach(task => {
-    app.addTask(task);
-});
-console.log("サンプルタスクを追加しました。");
+// sampleTasks.forEach(task => {
+//     app.addTask(task);
+// });
+// console.log("サンプルタスクを追加しました。");
 //# sourceMappingURL=testTask.js.map

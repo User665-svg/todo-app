@@ -13,7 +13,7 @@ import { isEqualTask } from "./lib/utility.js";
 export class TaskManager {
   private tasks: TasksMap = new Map();
   private nextId: TaskId = 1;
-  private storage = createMemoryStorage()
+  private storage = createBrowserStorage();
 
   /** コンストラクタ */
   constructor() {
@@ -29,7 +29,7 @@ export class TaskManager {
     
   }
 
-  /*  新しいタスクを追加する */
+  /**  新しいタスクを追加する */
   addTask(task: Task): TaskId {
     const id = this.nextId++;
     this.tasks.set(id, task);
@@ -37,7 +37,7 @@ export class TaskManager {
     return id;
   }
 
-  /*  指定したIDのタスクを取得する */
+  /** 指定したIDのタスクを取得する */
   getTask(id: TaskId): Task {
     const task = this.tasks.get(id);
     if (!task) {
@@ -46,7 +46,7 @@ export class TaskManager {
 
     return task;
   }
-  /*  指定したIDのタスクを更新する */
+  /** 指定したIDのタスクを更新する */
   setTask(id: TaskId, task: Task) {
     if (!this.tasks.has(id)) {
       throw new Error(`Task not found. id=${id}`);
@@ -54,14 +54,14 @@ export class TaskManager {
     this.tasks.set(id, task);
     this.save();
   }
-  /*  指定したIDのタスクを削除する */
+  /** 指定したIDのタスクを削除する */
   deleteTask(id: TaskId) {
     if (!this.tasks.delete(id)) {
       throw new Error(`Task not found. id=${id}`);
     }
     this.save();
   }
-  /*  指定したIDのタスクの完了状態を切り替える */
+  /** 指定したIDのタスクの完了状態を切り替える */
   toggleTask(id: TaskId) {
     const current = this.getTask(id);
     const updated: Task = {
@@ -71,7 +71,7 @@ export class TaskManager {
     };
     this.setTask(id, updated);
   }
-  /*  指定したIDのタスクを編集する */
+  /**  指定したIDのタスクを編集する */
   editTask(id: TaskId, editTask: Task) {
     const task = this.getTask(id);
     const isEdited = isEqualTask(task, editTask);
@@ -79,7 +79,7 @@ export class TaskManager {
     editTask.updatedAt = new Date();
     this.setTask(id, editTask);
   }
-  /*  すべてのタスクを取得する */
+  /**  すべてのタスクを取得する */
   getDataAll(): TasksMap {
     return this.tasks;
   }

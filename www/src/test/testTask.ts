@@ -61,8 +61,8 @@ export const sampleTasks: Task[] = [
         repeat:{ enabled:true, count:2, unit:"month"}
     }
 ];
-sampleTasks.forEach(task => {
-    app.addTask(task);
-});
+// sampleTasks.forEach(task => {
+//     app.addTask(task);
+// });
 
-console.log("サンプルタスクを追加しました。");
+// console.log("サンプルタスクを追加しました。");

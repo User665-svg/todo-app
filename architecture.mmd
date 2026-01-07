@@ -1,0 +1,60 @@
+graph TB
+    subgraph UI["ユーザーインターフェース"]
+        Index["index.html"]
+        Edit["edit.html"]
+        EditAI["edit_AI.html"]
+    end
+
+    subgraph Pages["ページロジック"]
+        MainPage["main.ts/js"]
+        EditPage["edit.ts/js"]
+    end
+
+    subgraph BizLogic["ビジネスロジック"]
+        UseCase["usecase.ts/js"]
+        Visible["visible.ts/js"]
+        LogicModule["logic.ts/js"]
+    end
+
+    subgraph Lib["ライブラリ"]
+        Task["task.ts/js<br/>タスク操作"]
+        Type["type.ts/js<br/>型定義"]
+        Repeat["repeat.ts/js<br/>繰り返し処理"]
+        DOM["dom-utils.ts/js<br/>DOM操作"]
+        Storage["localStorage.ts/js<br/>ローカルストレージ"]
+        Utility["utility.ts/js<br/>ユーティリティ"]
+    end
+
+    subgraph Data["データストレージ"]
+        LocalStorage["ブラウザ<br/>LocalStorage"]
+    end
+
+    subgraph Components["コンポーネント"]
+        Loader["loader.js"]
+        CordovaLoader["cordova-loader.js"]
+        CoreUtils["monaca-core-utils.js"]
+    end
+
+    Index --> MainPage
+    Edit --> EditPage
+    EditAI --> EditPage
+
+    MainPage --> UseCase
+    EditPage --> UseCase
+
+    UseCase --> LogicModule
+    LogicModule --> Task
+    LogicModule --> Visible
+    
+    Task --> Type
+    Task --> Storage
+    Utility --> DOM
+    Repeat --> Type
+
+    Storage --> LocalStorage
+    
+    EditPage --> DOM
+    MainPage --> DOM
+
+    CordovaLoader --> Loader
+    CoreUtils --> Components
