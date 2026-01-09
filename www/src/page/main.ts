@@ -2,6 +2,7 @@ import { clickedGetElement, getFieldElement, taskBorderColor, updateVisible } fr
 import { defaultTask } from "./../lib/task.js";
 import { TaskUseCase } from "./../usecase.js";
 import { toDateText } from "./../lib/utility.js";
+import { sampleTasks } from "../test/testTask.js";
 
 const app = new TaskUseCase();
 
@@ -15,7 +16,7 @@ export const top_element = {
     "searchText"   :document.getElementById('search-input') as HTMLInputElement,
     "statusFilter" :document.getElementById('checked')      as HTMLSelectElement,
     "field"        :document.getElementById('field')        as HTMLSelectElement,
-    "order"        :document.getElementById('order')        as HTMLSelectElement
+    "order"        :document.getElementById('order')        as HTMLSelectElement,
 }
 function render(){
     const tasks = updateVisible(app);
@@ -67,9 +68,30 @@ top_element.tasks.addEventListener('click', (ev:PointerEvent) =>{
         render();
         return;
     }
+    let copy = clickedGetElement(ev,"copy-btn");
+    if(copy){
+        app.copyTask(Number(id));
+        const backup = copy.cloneNode(true) as HTMLElement;
+        copy.textContent = "copied!";
+        setTimeout(() => {
+            copy.replaceWith(backup);
+        }, 1000);
+        return;
+    }
+
     window.location.href = `/www/edit_AI.html?id=${id}`;
+
 })
+
 top_element.searchBtn.addEventListener('click',render)
 top_element.field.addEventListener('change',render)
 top_element.order.addEventListener('change',render)
 top_element.statusFilter.addEventListener('change',render)
+
+
+top_element.test?.addEventListener('click',()=>{
+    sampleTasks.forEach(task => {
+        app.addTask(task);
+    });
+    render();
+})

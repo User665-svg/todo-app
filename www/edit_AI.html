@@ -69,64 +69,6 @@
       />
     </div>
 
-    <!-- 繰り返し -->
-    <div class="space-y-1">
-      <div class="flex items-center justify-between gap-2">
-        <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">
-          繰り返し
-        </label>
-
-        <!-- 繰り返しON/OFF (オプション) -->
-        <label class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-300">
-          <input
-            id="repeatEnabled"
-            name="repeatEnabled"
-            type="checkbox"
-            class="rounded border-slate-300 text-indigo-500
-                   focus:ring-indigo-400/60 dark:border-slate-500"
-          />
-          有効にする
-        </label>
-      </div>
-
-      <div class="flex gap-2">
-        <!-- 回数 -->
-        <input
-          id="repeatCount"
-          name="repeatCount"
-          type="number"
-          min="1"
-          class="w-24 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm
-                 text-slate-900 shadow-sm outline-none
-                 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400/40
-                 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100
-                 disabled:cursor-not-allowed disabled:bg-slate-100
-                 dark:disabled:bg-slate-800"
-          placeholder="1"
-        />
-
-        <!-- 単位 -->
-        <select
-          id="repeatUnit"
-          name="repeatUnit"
-          class="flex-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm
-                 text-slate-900 shadow-sm outline-none
-                 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400/40
-                 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100
-                 disabled:cursor-not-allowed disabled:bg-slate-100
-                 dark:disabled:bg-slate-800"
-        >
-          <option value="day">日ごと</option>
-          <option value="week">週ごと</option>
-          <option value="month">月ごと</option>
-        </select>
-      </div>
-
-      <p class="text-xs text-slate-500 dark:text-slate-400">
-        例：3 日ごと、1 週ごと、1 ヶ月ごと など
-      </p>
-    </div>
-
     <!-- 優先度 -->
     <div class="space-y-1">
       <span class="block text-sm font-medium text-slate-700 dark:text-slate-200">

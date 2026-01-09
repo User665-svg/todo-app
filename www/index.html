@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <title>Monaca Education ダイレクトプレビュー</title>
-    <script src="components/loader.js"></script><link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
     <script src="js/education.js" defer></script>
     <script src="js/config.js" defer></script>
@@ -14,8 +17,7 @@
 </head>
 
 <body class="bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-    <header
-      class="fixed top-0 w-full pb-4 
+    <header class="fixed top-0 w-full pb-4 
              bg-linear-to-b from-slate-300 to-slate-100
              text-slate-700
              dark:bg-linear-to-b dark:from-slate-900 dark:to-slate-950 
@@ -25,26 +27,18 @@
             Consilia
         </div>
         <div class="flex justify-center text-[1rem] mt-2">
-            <input
-              id="search-input"
-              type="search"
-              placeholder="検索"
-              class="border-2 rounded-2xl text-[1rem] py-1.5 px-1.5
+            <input id="search-input" type="search" placeholder="検索" class="border-2 rounded-2xl text-[1rem] py-1.5 px-1.5
                      bg-white text-slate-900
                      focus:outline-none 
                      dark:bg-slate-900 dark:text-white/50 dark:border-white/50">
-            <input
-              id="search-btn"
-              type="button"
-              class="px-2 mx-2 rounded-2xl
+            <input id="search-btn" type="button" class="px-2 mx-2 rounded-2xl
                      bg-slate-900 text-slate-50 hover:bg-slate-800
                      dark:bg-white/10 dark:border-2 dark:border-white/10: dark:text-white/50 dark:hover:bg-white/20"
-              value="検索">
+                value="検索">
         </div>
 
         <div class="ml-6 text-[1rem] mt-3">
-            <select id="field"
-              class="px-2 rounded-2xl border-2 mr-1.5
+            <select id="field" class="px-2 rounded-2xl border-2 mr-1.5
                      bg-white text-slate-700
                      dark:bg-slate-900 dark:text-white/40">
                 <option value="created" class="bg-slate-100 dark:bg-slate-800">
@@ -58,17 +52,14 @@
                 </option>
             </select>
 
-            <select
-              id="order"
-              class="px-2 rounded-2xl border-2 mr-1.5
+            <select id="order" class="px-2 rounded-2xl border-2 mr-1.5
                      bg-white text-slate-700
                      dark:bg-slate-900 dark:text-white/40">
                 <option value="asc" class="bg-slate-100 dark:bg-slate-800">昇順</option>
                 <option value="desc" class="bg-slate-100 dark:bg-slate-800">降順</option>
             </select>
 
-            <select id="checked"
-              class="px-2 rounded-2xl border-2
+            <select id="checked" class="px-2 rounded-2xl border-2
                      bg-white text-slate-700
                      dark:bg-slate-900 dark:text-white/40">
                 <option value="todo" class="bg-slate-100 dark:bg-slate-800">未完了</option>
@@ -80,11 +71,10 @@
         <ul id="tasks" class="mx-6 mb-[150px]">
         </ul>
         <div class="fixed bottom-15 right-5">
-            <div id="add-btn"
-              class="m-4 p-4 rounded-full text-center cursor-pointer
+            <div id="add-btn" class="m-4 p-4 rounded-full text-center cursor-pointer
                      bg-slate-400/70 text-slate-900 hover:bg-slate-800
                      dark:bg-slate-600/60 dark:text-white/70 dark:hover:bg-slate-600/60">
-              +
+                +
             </div>
         </div>
         <!-- <div id="test" class="text-white bg-black text-2xl">aaaa</div> -->
@@ -94,12 +84,12 @@
         li->div -- title    タイトル
                 -- content  内容
                 -- due-date 期限
+            
                 -- done     完了
                 -- del      削除
     -->
     <template id="tpl-todo">
-        <li
-          class="task mb-4 p-3 rounded-2xl border
+        <li class="task mb-4 p-3 rounded-2xl border
                  bg-white text-slate-800
                  shadow-sm
                  dark:bg-white/5 dark:text-white/80">
@@ -119,21 +109,21 @@
                     内容
                 </div>
                 <div class="flex">
-                    <div
-                      class="done mx-1 px-2 py-1.5 items-center rounded-2xl cursor-pointer text-nowrap
-                             bg-sky-500/20 text-sky-800 hover:bg-sky-500/30
-                             dark:bg-sky-400/30 dark:text-sky-50 dark:hover:bg-sky-300/30">
-                      完了
+                    <div class="done mx-1 px-2 py-1.5 items-center rounded-2xl cursor-pointer text-nowrap
+                    bg-sky-500/20 text-sky-800 hover:bg-sky-500/30
+                    dark:bg-sky-400/30 dark:text-sky-50 dark:hover:bg-sky-300/30">
+                        完了
                     </div>
-                    <div
-                      class="del ml-1 px-2 py-1.5 items-center rounded-2xl cursor-pointer text-nowrap
-                             bg-red-500/20 text-red-800 hover:bg-red-500/30
-                             dark:bg-red-400/30 dark:text-red-50 dark:hover:bg-red-300/30">
-                      削除
+                    <div class="del ml-1 px-2 py-1.5 items-center rounded-2xl cursor-pointer text-nowrap
+                                bg-red-500/20 text-red-800 hover:bg-red-500/30
+                                dark:bg-red-400/30 dark:text-red-50 dark:hover:bg-red-300/30">
+                        削除
                     </div>
                 </div>
             </div>
+            <div class="copy-btn mt-1"><img src="./img/content_copy.png" class="opacity-25 bg-white/40 p-1 rounded-sm scale-80" alt="" srcset=""></div>
         </li>
     </template>
 </body>
+
 </html>

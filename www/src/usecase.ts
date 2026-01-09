@@ -1,6 +1,7 @@
 import { TaskManager } from "./logic.js";
 import type { SortField, SortOrder, Task, TaskId, TasksMap } from "./lib/type.js";
 import { queryVisible } from "./visible.js";
+import { copyToClipboard } from "./lib/copy.js";
 
 export class TaskUseCase{
     manaeger=new TaskManager()
@@ -40,5 +41,9 @@ export class TaskUseCase{
     /** 指定したIDのタスクを編集する */
     editeTask(id:TaskId,editedTask:Task){
         return this.manaeger.editTask(id,editedTask);
+    }
+    /** 指定したIDのタスクをコピーする */
+    copyTask(id: TaskId) {
+        copyToClipboard(id);
     }
 }

@@ -1,5 +1,6 @@
 import { TaskManager } from "./logic.js";
 import { queryVisible } from "./visible.js";
+import { copyToClipboard } from "./lib/copy.js";
 export class TaskUseCase {
     constructor() {
         this.manaeger = new TaskManager();
@@ -31,6 +32,10 @@ export class TaskUseCase {
     /** 指定したIDのタスクを編集する */
     editeTask(id, editedTask) {
         return this.manaeger.editTask(id, editedTask);
+    }
+    /** 指定したIDのタスクをコピーする */
+    copyTask(id) {
+        copyToClipboard(id);
     }
 }
 //# sourceMappingURL=usecase.js.map
