@@ -347,6 +347,15 @@
   .w-full {
     width: 100%;
   }
+  .max-w-\[100px\] {
+    max-width: 100px;
+  }
+  .max-w-\[200px\] {
+    max-width: 200px;
+  }
+  .max-w-\[400px\] {
+    max-width: 400px;
+  }
   .max-w-xl {
     max-width: var(--container-xl);
   }
@@ -753,6 +762,9 @@
   }
   .opacity-25 {
     opacity: 25%;
+  }
+  .opacity-30 {
+    opacity: 30%;
   }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
